@@ -10,25 +10,14 @@ const Modal: React.FC<ModalProps> = ({ isOpen, onClose, children }) => {
     if (!isOpen) return null;
 
     return (
-        <Modal isOpen={isModalOpen} onClose={() => setModalOpen(false)}>
-            <h2>Add Card</h2>
-            <label>
-                Card Title:
-                <input type="text" value={newCardTitle} onChange={(e) => setNewCardTitle(e.target.value)} />
-            </label>
-            <label>
-                Select Column:
-                <select value={selectedColumnId} onChange={(e) => setSelectedColumnId(e.target.value)}>
-                    <option value="">Select a Column</option>
-                    {columns.map((column) => (
-                        <option key={column.id} value={column.id}>
-                            {column.title}
-                        </option>
-                    ))}
-                </select>
-            </label>
-            <button onClick={handleAddCard}>Add Card</button>
-        </Modal>
+        <div className="fixed top-0 left-0 w-full h-full bg-gray-800 bg-opacity-50 flex items-center justify-center">
+            <div className="bg-white p-4 rounded-md">
+                {children}
+                <button className="mt-2 p-2 bg-gray-500 text-white rounded-md" onClick={onClose}>
+                    Close
+                </button>
+            </div>
+        </div>
     );
 };
 
